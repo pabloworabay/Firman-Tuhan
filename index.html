@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Firman Tuhan</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       min-height: 100vh;
       display: flex;
@@ -15,42 +15,83 @@
       background-size: cover;
       background-position: center;
       color: white;
-      padding: 20px;
+      padding: 24px;
+      font-family: 'Segoe UI', 'Georgia', serif;
     }
     .wadah {
       max-width: 600px;
       width: 100%;
       background: rgba(0,0,0,0.35);
-      padding: 40px 30px;
+      padding: 48px 32px;
       border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       backdrop-filter: blur(8px);
       text-align: center;
     }
-    h1 { font-size: 28px; margin-bottom: 30px; color: #ffd700; }
-    .ayat {
-      font-size: 22px;
-      line-height: 1.8;
-      margin-bottom: 25px;
-      min-height: 120px;
-      padding: 20px;
-      border-left: 3px solid #ffd700;
+    .atas-firman {
+      font-size: 18px;
+      color: #d0d0d0;
+      margin-bottom: 4px;
     }
-    .renungan {
+    .ruang-teduh {
+      font-size: 26px;
+      color: #ffd700;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+    .slogan {
+      font-size: 17px;
+      color: #b8b8b8;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+    .label-firman {
+      font-size: 15px;
+      color: #aaa;
+      margin-bottom: 4px;
+    }
+    .nomor {
+      font-size: 15px;
+      color: #888;
+      margin-bottom: 28px;
+    }
+    .tanda-kutip {
+      font-size: 40px;
+      color: #ffd700;
+      line-height: 1;
+      margin-bottom: -10px;
+    }
+    .isi-ayat {
+      font-size: 23px;
+      line-height: 1.8;
+      margin-bottom: 10px;
+      padding: 0 10px;
+    }
+    .sumber {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 32px;
+    }
+    .label-renungan {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .isi-renungan {
       font-size: 17px;
       line-height: 1.7;
-      color: #f0f0f0;
-      margin-bottom: 30px;
+      color: #e0e0e0;
+      margin-bottom: 36px;
       font-style: italic;
     }
-    .tombol {
+    .baris-tombol {
       display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
     }
     button {
-      padding: 12px 25px;
+      padding: 12px 22px;
       font-size: 16px;
       border: none;
       border-radius: 8px;
@@ -65,12 +106,97 @@
 </head>
 <body>
   <div class="wadah">
-    <h1>📖 Firman Tuhan</h1>
-    <div class="ayat" id="ayat">
-      Mazmur 119:30<br>
-      Aku memilih jalan kebenaran, aku menetapkan hukum-hukum-Mu di hadapanku.
+    <p class="atas-firman">Jeda sejenak · Renungkan</p>
+    <h2 class="ruang-teduh">Ruang Teduh</h2>
+    <p class="slogan">Tenangkan hati. Dengarkan firman.<br>Ambil waktu sejenak untuk berhenti, membaca, dan membawa satu kebenaran ke dalam hari ini.</p>
+    
+    <p class="label-firman">Firman untuk direnungkan</p>
+    <p class="nomor" id="nomor">1 / 10</p>
+    
+    <div class="tanda-kutip">"</div>
+    <div class="isi-ayat" id="ayat">Tuhan adalah gembalaku, takkan kekurangan aku.</div>
+    <p class="sumber" id="sumber">Mazmur 23:1</p>
+    
+    <p class="label-renungan">Renungan Singkat</p>
+    <p class="isi-renungan" id="renungan">Saat pikiran dipenuhi daftar yang belum selesai, berhentilah sejenak. Ingat bahwa hari ini tidak harus ditanggung sendirian.</p>
+    
+    <div class="baris-tombol">
+      <button onclick="sebelumnya()">◀ Ayat Sebelumnya</button>
+      <button onclick="berikutnya()">Ayat Berikutnya ▶</button>
     </div>
-    <p class="renungan" id="renungan">
-      Renungan: Tetap berpegang pada kebenaran Tuhan, itulah jalan yang terbaik bagi hidup kita.
-    </p>
-    <div class
+  </div>
+
+  <script>
+    const daftar = [
+      {
+        ayat: "Tuhan adalah gembalaku, takkan kekurangan aku.",
+        sumber: "Mazmur 23:1",
+        renungan: "Saat pikiran dipenuhi daftar yang belum selesai, berhentilah sejenak. Ingat bahwa hari ini tidak harus ditanggung sendirian."
+      },
+      {
+        ayat: "Aku memilih jalan kebenaran, aku menetapkan hukum-hukum-Mu di hadapanku.",
+        sumber: "Mazmur 119:30",
+        renungan: "Tetap berpegang pada kebenaran Tuhan, itulah jalan yang terbaik bagi hidup kita."
+      },
+      {
+        ayat: "Kita mengasihi, karena Allah lebih dahulu mengasihi kita.",
+        sumber: "1 Yohanes 4:19",
+        renungan: "Kasih kita kepada sesama adalah pantulan dari kasih Tuhan yang sudah menyentuh hati kita lebih dulu."
+      },
+      {
+        ayat: "Segala perkara dapat kutanggung di dalam Dia yang memberi kekuatan kepadaku.",
+        sumber: "Filipi 4:13",
+        renungan: "Kekuatan sejati bukan dari diri sendiri, melainkan dari Tuhan yang menopang kita setiap hari."
+      },
+      {
+        ayat: "Sebab Aku akan mendatangkan kesembuhan bagimu, dan Aku akan mengobati luka-lukamu, firman Tuhan.",
+        sumber: "Yeremia 30:17",
+        renungan: "Tuhan tidak pernah meninggalkan kita dalam kesakitan, Dia datang membawa kesembuhan yang sempurna."
+      },
+      {
+        ayat: "Tak seorang pun menyalakan pelita lalu menutupinya dengan bejana atau menaruhnya di bawah tempat tidur, melainkan di atas kaki pelita, supaya orang yang masuk melihat cahayanya.",
+        sumber: "Lukas 8:16",
+        renungan: "Jadilah terang bagi orang di sekitarmu, biarkan cahaya Tuhan bersinar melalui hidupmu."
+      },
+      {
+        ayat: "Jadilah orang yang dikasihi Allah, orang-orang-Nya yang kudus dan yang dikasihi-Nya; maka kenakanlah belas kasihan, kemurahan, kerendahan hati, kelemahlembutan dan kesabaran.",
+        sumber: "Kolose 3:12",
+        renungan: "Sifat-sifat yang indah inilah pakaian yang paling pantas dikenakan oleh anak-anak Tuhan."
+      },
+      {
+        ayat: "Allah itu bagi kita tempat perlindungan dan kekuatan, penolong yang selalu ada dalam kesesakan.",
+        sumber: "Mazmur 46:2",
+        renungan: "Di setiap kesulitan, Tuhan tidak pernah jauh — Dia adalah tempat berlindung yang paling aman."
+      },
+      {
+        ayat: "Setiap pemberian yang baik dan setiap anugerah yang sempurna, datangnya dari atas, dari Bapa yang menciptakan terang-terang di langit.",
+        sumber: "Yakobus 1:17",
+        renungan: "Segala sesuatu yang baik yang kita terima adalah karunia dari Tuhan — hendaklah kita selalu bersyukur."
+      },
+      {
+        ayat: "Dan jika seseorang hendak mengajak engkau berperkara di muka hakim untuk mengambil bajumu, biarkanlah ia juga mengambil jubahmu.",
+        sumber: "Matius 5:40",
+        renungan: "Memberi dengan sukarela menunjukkan hati yang percaya sepenuhnya pada Tuhan yang melindungi."
+      }
+    ];
+
+    let nomor = 0;
+    tampil();
+
+    function tampil() {
+      document.getElementById("nomor").textContent = (nomor + 1) + " / " + daftar.length;
+      document.getElementById("ayat").textContent = daftar[nomor].ayat;
+      document.getElementById("sumber").textContent = daftar[nomor].sumber;
+      document.getElementById("renungan").textContent = daftar[nomor].renungan;
+    }
+    function sebelumnya() {
+      nomor = (nomor - 1 + daftar.length) % daftar.length;
+      tampil();
+    }
+    function berikutnya() {
+      nomor = (nomor + 1) % daftar.length;
+      tampil();
+    }
+  </script>
+</body>
+</html>
